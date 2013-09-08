@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Action">
+                            <p:commandLink value="Add new person" action="#{personController.showCreate}"/>
+                            <p:commandLink value="List person" action="#{personController.showList}"/>
+                        </p:submenu>
+                        
+                       
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <p:panelGrid columns="3">
+                            <p:outputLabel value="Name :"/>
+                            <p:inputText id="name" value="#{personController.newPerson.name}"
+                             required="true" requiredMessage="Please fill it with a value !!" />
+                            <p:message for="name"/>
+                            
+                            
+                            <p:outputLabel value="Last name :"/>
+                            <p:inputText id="lastName" value="#{personController.newPerson.lastName}"
+                             required="true" requiredMessage="Please fill it with a value !!" />
+                            <p:message for="lastName"/>
+                            
+                            <p:outputLabel value="Birth date :"/>
+                            <p:calendar id="birthDate" value="#{personController.newPerson.dateOfBirth}"
+                             required="true" requiredMessage="Veuillez saisir une date de naissance" 
+                             mode="popup" pattern="dd/MM/yyyy"/>
+                            <p:message for="birthDate"/>
+                            
+                            <p:outputLabel value="Email :"/>
+                            <p:inputText id="email" value="#{personController.newPerson.email}"
+                             required="true" requiredMessage="Please set a valid mail adress !!" />
+                            <p:message for="email"/>
+                            
+                            <p:outputLabel value="Phone number :"/>
+                            <p:inputText id="phone" value="#{personController.newPerson.phone}" />
+                            <p:spacer/>
+                            
+                            <p:outputLabel value="Adress :"/>
+                            <p:inputTextarea id="adress" value="#{personController.newPerson.adress}" />
+                            <p:spacer/>
+                            
+                            <p:outputLabel value="Profession :"/>
+                            <p:inputText id="profession" value="#{personController.newPerson.profession}" />
+                            <p:spacer/>
+                            
+                            <h:commandButton action="#{personController.doCreate}" value="Add new person"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
