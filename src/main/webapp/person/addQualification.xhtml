@@ -41,17 +41,35 @@
 
                 <p:layoutUnit position="center">
                     <h:form>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Entitled :" />
-                            <p:outputLabel value="#{degreeController.degree.entitled}"/>
+                        <p:panelGrid columns="3">
+                            <p:outputLabel value="Graduate date :"/>
+                            <p:selectOneMenu value="#{personController.newQualification.degree}">
+                                <f:selectItems value="#{degreeController.all}"/>
+                            </p:selectOneMenu>
+                            <p:spacer/>
                             
-                            <p:outputLabel value="Type :" />
-                            <p:outputLabel value="#{degreeController.degree.type}"/>
+                            <p:outputLabel value="Graduate date :"/>
+                            <p:calendar id="graduateDate" value="#{personController.newQualification.graduateDate}"
+                             required="true" requiredMessage="Veuillez saisir une date de naissance" 
+                             mode="popup" pattern="dd/MM/yyyy"/>
+                            <p:message for="graduateDate"/>
                             
-                            <p:outputLabel value="Comment :" />
-                            <p:outputLabel value="#{degreeController.degree.comment}"/>
+                            <p:outputLabel value="Issuance :"/>
+                            <p:inputText id="issuance" value="#{personController.newQualification.issuance}"
+                             required="true" requiredMessage="Please fill it with a value !!" />
+                            <p:message for="issuance"/>
                             
+                            <p:outputLabel value="Mention :"/>
+                            <p:inputText id="mention" value="#{personController.newQualification.mention}"
+                             required="true" requiredMessage="Please set a valid mail adress !!" />
+                            <p:message for="mention"/>
                             
+                            <p:outputLabel value="Comment :"/>
+                            <p:inputTextarea id="comment" value="#{personController.newQualification.comment}"
+                              />
+                            <p:spacer/>
+                            
+                            <p:commandButton value="Add qualification" action="#{personController.doAddQualification}"/>
                         </p:panelGrid>
                     </h:form>
                 </p:layoutUnit>

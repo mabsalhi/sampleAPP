@@ -28,12 +28,13 @@
                 <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
                     <p:menu>
                         <p:submenu label="Person">
-                            <p:commandLink value="Add new person" action="#{personController.showCreate}"/>
-                            <p:commandLink value="List person" action="#{personController.showList}"/>
+                            <p:menuitem>
+                            <p:commandLink value="Add new person" action="#{personController.showCreate}"/></p:menuitem>
+                            <p:menuitem><p:commandLink value="List person" action="#{personController.showList}"/></p:menuitem>
                         </p:submenu>
                         <p:submenu label="Degree">
-                            <p:commandLink value="Add new person" action="#{personController.showCreate}"/>
-                            <p:commandLink value="List person" action="#{personController.showList}"/>
+                            <p:menuitem><p:commandLink value="Add new person" action="#{personController.showCreate}"/></p:menuitem>
+                            <p:menuitem><p:commandLink value="List person" action="#{personController.showAddQualification}"/></p:menuitem>
                         </p:submenu>
 
                     </p:menu>
@@ -63,6 +64,32 @@
                             <p:outputLabel value="Profession :" />
                             <p:outputLabel value="#{personController.person.profession}"/>
                         </p:panelGrid>
+                        <p:dataTable value="#{personController.person.qualificationList}" var="item">
+                            <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Graduate date"/>
+                    </f:facet>
+                                <h:outputText value="#{item.graduateDate}"/>
+                </p:column>
+                            <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Degree"/>
+                    </f:facet>
+                                <h:outputText value="#{item.degree.entitled}"/>
+                </p:column>
+                            <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Issuance"/>
+                    </f:facet>
+                                <h:outputText value="#{item.issuance}"/>
+                </p:column>
+                            <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Mention"/>
+                    </f:facet>
+                            <h:outputText value="#{item.mention}"/>
+                </p:column>
+                        </p:dataTable>
                     </h:form>
                 </p:layoutUnit>
 
