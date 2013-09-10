@@ -150,7 +150,7 @@ public class Degree implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sos.mabs.samplejeeapp.entities.Degree[ idDegree=" + idDegree + " ]";
+        return entitled;
     }
     
 }

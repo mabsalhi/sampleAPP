@@ -59,7 +59,10 @@
                             
                             <p:outputLabel value="Email :"/>
                             <p:inputText id="email" value="#{personController.newPerson.email}"
-                             required="true" requiredMessage="Please set a valid mail adress !!" />
+                             required="true" requiredMessage="Please set a valid mail adress !!" validatorMessage="Invalid email format">
+                                <f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputtext>
                             <p:message for="email"/>
                             
                             <p:outputLabel value="Phone number :"/>
