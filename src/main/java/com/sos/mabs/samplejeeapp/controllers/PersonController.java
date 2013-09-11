@@ -56,6 +56,10 @@ public class PersonController implements Serializable {
         return "addQualification?faces-redirect=true";
     }
     
+    public String showCertificate(){
+        return "certificate?faces-redirect=true";
+    }
+    
     
     public List<Person> getAll(){
         return personService.findAll();

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h1>Liste des cadres</h1>
+</h:head>
+    <h:body>
+    <ui:composition template="../resources/template.xhtml">
+        <ui:define name="content">	
+
+        <div class="span3 offset2">Liste des Cadres</div>
+        <p:messages for="update"/>
+        <h:form>
+            <h:commandButton value="Print" type="button">  
+        <p:printer target="certificate" />  
+    </h:commandButton>
+            <p:outputPanel id="certificate">
+                <div class="span3 col-offset-4">
+                            RÉPUBLIQUE FRANÇAISE</div>
+                <div class="span4" style="text-align: center;">MINISTÈRE DE L'ÉDUCATION NATIONALE<br/>
+COMMISSION NATIONALE DU DELF ET DU DALF / RECTORAT D’ACADEMIE</div>
+                <div class="span4 col-offset-3">ATTESTATION DE RÉUSSITE</div>
+                <div class="span10 col-offset-1">
+                            <p>Je soussigné M : <h4>Mohammed abdelbassat SALHI</h4><br/>
+                        Président du jury pour le Diplôme d'études en langue française
+                        au Centre d'Examen de : <br/>
+                        atteste que :<br/>
+                        M : <p:outputLabel value="#{personController.person.name}"/> <p:outputLabel value="#{personController.person.lastName}"/><br/>
+                        Né(e) le <p:outputLabel value="#{personController.person.dateOfBirth}"/> à<br/>
+                        n° de candidat :<p:outputLabel value="#{personController.person.idPerson}"/><br/>
+a subi avec succès les épreuves de l'examen :<br/>
+DELF (
+éventuellement,
+option) / DALF
+Niveau XX du Cadre européen commun de référence pour les langues<br/>
+session : <br/>
+à : <p:outputLabel value="#{personController.person.adress}"/><br/>
+avec les résultats suivants : (
+                            </p></div>
+                        </p:outputPanel>
+            
+        </h:form>
+        
+        </ui:define>
+    </ui:composition>
+    </h:body>
+</html>
