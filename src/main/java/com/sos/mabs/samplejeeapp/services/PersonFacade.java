@@ -5,6 +5,7 @@
 package com.sos.mabs.samplejeeapp.services;
 
 import com.sos.mabs.samplejeeapp.entities.Person;
+import com.sos.mabs.samplejeeapp.entities.Qualification;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +26,13 @@ public class PersonFacade extends AbstractFacade<Person> {
 
     public PersonFacade() {
         super(Person.class);
+    }
+    
+    public Qualification getLatetstFormation(Person person){
+        return (Qualification) em.createQuery("SELECT q FROM Qualification q WHERE q.graduateDate = (SELECT MAX(q.graduateDate) FROM Qualification q WHERE q.person = :person)")
+                .setParameter("person", person)
+                .getSingleResult();
+         
     }
     
 }

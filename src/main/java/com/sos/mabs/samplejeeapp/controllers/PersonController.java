@@ -28,6 +28,7 @@ public class PersonController implements Serializable {
     private QualificationFacade qualificationService;
     
     private Qualification newQualification;
+    private Qualification lastQualification;
     private List<Qualification> qualifications;
     
     private Person person;
@@ -57,6 +58,7 @@ public class PersonController implements Serializable {
     }
     
     public String showCertificate(){
+        lastQualification = personService.getLatetstFormation(person);
         return "certificate?faces-redirect=true";
     }
     
@@ -101,6 +103,14 @@ public class PersonController implements Serializable {
 
     public void setNewQualification(Qualification newQualification) {
         this.newQualification = newQualification;
+    }
+
+    public Qualification getLastQualification() {
+        return lastQualification;
+    }
+
+    public void setLastQualification(Qualification lastQualification) {
+        this.lastQualification = lastQualification;
     }
     
     
