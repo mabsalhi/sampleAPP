@@ -21,6 +21,7 @@ import javax.inject.Inject;
 /**
  *
  * @author abdel
+ * http://www.ixtendo.com/secure-your-jsf-application-with-jaas/
  */
 @Named(value = "personController")
 @SessionScoped
