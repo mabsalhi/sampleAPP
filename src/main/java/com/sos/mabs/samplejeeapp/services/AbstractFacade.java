@@ -4,6 +4,7 @@
  */
 package com.sos.mabs.samplejeeapp.services;
 
+import com.sos.mabs.samplejeeapp.exceptions.ValidationException;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -21,18 +22,33 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
+        if(entity == null)
+            throw new ValidationException(entity.getClass().getSimpleName() + " object is null !!");
+        
         getEntityManager().persist(entity);
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
     }
 
     public void edit(T entity) {
+        if(entity == null)
+            throw new ValidationException(entity.getClass().getSimpleName() + " object is null !!");
+        
         getEntityManager().merge(entity);
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
     }
 
     public void remove(T entity) {
+        if(entity == null)
+            throw new ValidationException(entity.getClass().getSimpleName() + " object is null !!");
+                
         getEntityManager().remove(getEntityManager().merge(entity));
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
     }
 
     public T find(Object id) {
+        if(id == null)
+            throw new ValidationException(id.getClass().getSimpleName() + "id is invalid !!");
+        
         return getEntityManager().find(entityClass, id);
     }
 

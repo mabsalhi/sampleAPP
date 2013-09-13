@@ -26,5 +26,4 @@ public class QualificationFacade extends AbstractFacade<Qualification> {
     public QualificationFacade() {
         super(Qualification.class);
     }
-    
 }

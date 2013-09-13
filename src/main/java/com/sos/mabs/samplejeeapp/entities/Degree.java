@@ -93,8 +93,6 @@ public class Degree implements Serializable {
         this.version = version;
     }
 
-    
-
     public String getEntitled() {
         return entitled;
     }
